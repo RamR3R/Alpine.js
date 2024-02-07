@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine.js study</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class=" font-serif">
+    <h1 class="text-xl mb-4" x-data="{ message: 'This page is done using Alpine.js' }" x-text="message"></h1>
+    <div class="container mx-auto my-auto max-w-sm" x-data="{ open: false,val:true,name:`Ram`,nameShow:false ,toggle() { this.open = ! this.open; this.val = !this.open }, nameToggle(){this.nameShow = !this.nameShow}}"> 
+        <!-- We can declare varriables and functions also in the x-data itself -->
+        <button class="bg-teal-500 rounded-3xl text-black-800 px-10 py-5" x-on:click="toggle()">Show/ Hide content</button>
+            <div class="m-auto max-w-sm gap-30" x-show="val">
+                <h2>This is the Child overriden content</h2>
+            </div>
+        <!-- This is the child where only the parent determines the values which is initialized in the x-data -->
+        <div class="mx-auto my-auto max-w-sm" x-show="open">
+            <h1>This is the hidden content</h1>
+            <p class="m-auto bg-gray-200 rounded py-10 px-10">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam rem maxime similique obcaecati. Quam, magnam quas maxime laboriosam illo atque praesentium quos tempore aperiam tempora ratione rerum dolores qui necessitatibus vitae autem assumenda libero id quia! Amet cumque explicabo eveniet illo numquam quos omnis in reprehenderit? Numquam eveniet voluptatibus excepturi.
+            </p>
+        </div>
+
+        <button class="bg-yellow-300 text-black-500 px-2 py-3 rounded-xl" x-on:click="nameToggle()">Name</button>
+        <div class="my-10" x-show="nameShow" x-tran>
+            <p class="bg-gray-200 rounded-xl px-5 py-5 mx-auto my-auto">This is value in name found in the data : <span class="font-bold" x-text="name"></span></p>
+        </div>
+
+    </div>
+
+
+    
+
+     
+    
+</body>
+</html>
